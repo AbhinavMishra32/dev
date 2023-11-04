@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Document</title>
+</head>
+<body>
+  <button onclick="
+  userMove = 'Rock';
+  evaluateGame();
+  ">Rock</button>
+
+  <button onclick="
+  userMove = 'Paper'
+  evaluateGame();
+  ">Paper</button>
+
+  <button onclick="
+  userMove = 'Scissors'
+  evaluateGame();
+  ">Scissors</button>
+
+  <p class = "js-moves"></p>
+  <p class = "js-score"></p>
+
+  <script>
+    let score = JSON.parse(localStorage.getItem('score')) || {
+      wins: 0,
+      loses: 0,
+      ties: 0
+    };
+
+    //changing the live score html element
+    document.querySelector('.js-score').innerHTML= `Wins: ${score.wins}, Losses: ${score.loses}, Ties: ${score.ties}`;
+
+
+    function updateScoreElement() {
+        document.querySelector('.js-score')
+          .innerHTML = `Wins: ${score.wins}, Losses: ${score.loses}, Ties: ${score.ties}`;
+      }
+
+    
+    let userMove = ""
+    let move = ""
+    
+    function evaluateGame() {
+      let randomInt = Math.random()
+      if (randomInt <= 1/3){
+        move = "Rock";
+      }
+      else if (randomInt <= 2/3){
+        move = "Paper";
+      }
+      else{
+        move = "Scissors";
+      }
+      if(userMove =='Rock' && move == "Paper"){
+        score.wins +=1;
+        document.querySelector('.js-moves').innerHTML=`USER WON -- computer picked: ${move} and user picked: ${userMove}`;
+        
+        
+      }
+      else if (userMove =='Paper' && move == "Rock"){
+        score.loses+=1;
+        document.querySelector('.js-moves').innerHTML=`CPU WON -- computer picked: ${move} and user picked: ${userMove}`;
+        
+      }
+      else if (userMove =='Scissors' && move == "Paper"){
+        score.wins +=1;
+        document.querySelector('.js-moves').innerHTML=`USER WON -- computer picked: ${move} and user picked: ${userMove}`;
+        
+      }
+      else if (userMove =='Paper' && move == "Scissors"){
+        score.loses+=1;
+        document.querySelector('.js-moves').innerHTML=`CPU WON -- computer picked: ${move} and user picked: ${userMove}`;
+        
+      }
+      else if (userMove =='Scissors' && move == "Rock"){
+        score.loses +=1;
+        document.querySelector('.js-moves').innerHTML=`CPU WON -- computer picked: ${move} and user picked: ${userMove}`;
+        
+      }
+      else if (userMove =='Rock' && move == "Scissors"){
+        score.wins+=1;
+        document.querySelector('.js-moves').innerHTML=`USER WON -- computer picked: ${move.upper} and user picked: ${userMove}`;
+        
+      }
+      else{
+        score.ties+=1;
+        document.querySelector('.js-moves').innerHTML="Tie!";
+        
+      }
+      localStorage.setItem('score', JSON.stringify(score));
+      updateScoreElement();
+    }
+
+  </script>
+</body>
+</html>
