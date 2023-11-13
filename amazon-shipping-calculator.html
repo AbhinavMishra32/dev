@@ -24,7 +24,18 @@
       background-color: rgb(216, 216, 216);
       color: black;
     }
-    
+    .cost-input{
+      font-size: 15px;
+      padding:6px;
+    }
+    .calculate-button{
+      background-color: green;
+      padding: 8px 13px;
+      border: none;
+      color: white;
+      font-size: 18px;
+      border-radius: 8px;
+    }
 
   </style>
 </head>
@@ -32,8 +43,8 @@
   <p>Youtube Subscribe button</p>
   <button onclick = "subscribe();" class = "js-subscribe-button subscribe-button">Subscribe</button>
   <p>Amazon Shipping Calculator</p>
-  <input placeholder="Cost of order" class="js-input">
-  <button onclick = "showShippingCost();">Calculate</button>
+  <input placeholder="Cost of order" class="js-input cost-input">
+  <button class = "calculate-button" onclick = "showShippingCost();">Calculate</button>
   <p class = 'js-showcost'>Cost here</p>
 
   <script>
