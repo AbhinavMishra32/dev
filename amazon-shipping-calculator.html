@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Document</title>
+  <style>
+    body{
+      font-family: Helvetica;
+    }
+    .subscribe-button {
+      border: none;
+      background-color: black;
+      color: white;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      padding-left: 15px;
+      padding-right: 15px;
+      font-weight: bold;
+      font-size: 15px;
+      border-radius: 50px;
+      cursor: pointer;
+      margin-bottom: 30px;
+    }
+    .is-subscribed{
+      background-color: rgb(216, 216, 216);
+      color: black;
+    }
+    
+
+  </style>
+</head>
+<body>
+  <p>Youtube Subscribe button</p>
+  <button onclick = "subscribe();" class = "js-subscribe-button subscribe-button">Subscribe</button>
+  <p>Amazon Shipping Calculator</p>
+  <input placeholder="Cost of order" class="js-input">
+  <button onclick = "showShippingCost();">Calculate</button>
+  <p class = 'js-showcost'>Cost here</p>
+
+  <script>
+    const shippingCost = 5;
+    const shippingThreshold = 30;
+    let userInput = 0;
+    function showShippingCost(){
+      userInput = parseInt(document.querySelector('.js-input').value);
+      showCost()
+    }
+
+    function showCost(){
+      const showCostElement = document.querySelector('.js-showcost');
+      
+      if(userInput<=shippingThreshold){
+        
+        showCostElement.innerHTML = `${userInput+shippingCost}, Shipping included`;
+        }
+      else{
+        showCostElement.innerHTML = `${userInput}, Shipping FREE`
+      }
+    }
+    function subscribe(){
+      const buttonElement = document.querySelector('.js-subscribe-button');
+      if(buttonElement.innerHTML === 'Subscribe'){
+        buttonElement.innerHTML = 'Subscribed';
+        buttonElement.classList.add('is-subscribed');
+        console.log("added class");
+      }
+      else{
+        buttonElement.innerHTML = 'Subscribe';
+        buttonElement.classList.remove('is-subscribed')
+      }
+    }
+      
+    
+  </script>
+</body>
+</html>
