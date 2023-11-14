@@ -48,46 +48,83 @@
 
 // console.log(countMatched(nestedArray));
 
-
+function countGivenArr(arr) {
+    const counts = {};
+  
+    arr.forEach(obj => {
+      const symbol = Object.keys(obj)[0];
+      counts[symbol] = (counts[symbol] || 0) + obj[symbol];
+    });
+  
+    return counts;
+  }
 
 function countMatched(nArray) {
-    let conOcur = 0;
-
+    let totalConOcur = 0;
+    let totalConOcurArr = [];
     for (let i = 0; i < nArray.length; i++) {
         for (let j = 0; j < nArray[i].length; j++) {
             const currentSymbol = nArray[i][j];
-
+            let symbolOcur = 0;
             if (i > 0 && nArray[i - 1][j] === currentSymbol) { // Check top
-                conOcur++;
+                totalConOcur++;
+                symbolOcur++;
+                totalConOcurArr.push({[currentSymbol]: symbolOcur});
                 continue;
             }
 
             if (i < nArray.length - 1 && nArray[i + 1][j] === currentSymbol) { // Check bottom
-                conOcur++;
+                totalConOcur++;
+                symbolOcur++;
+                totalConOcurArr.push({[currentSymbol]: symbolOcur});
                 continue;
             }
 
             if (j > 0 && nArray[i][j - 1] === currentSymbol) { // Check left
-                conOcur++;
+                totalConOcur++;
+                symbolOcur++;
+                totalConOcurArr.push({[currentSymbol]: symbolOcur});
                 continue;
             }
 
             if (j < nArray[i].length - 1 && nArray[i][j + 1] === currentSymbol) { // Check right
-                conOcur++;
+                totalConOcur++;
+                symbolOcur++;
+                totalConOcurArr.push({[currentSymbol]: symbolOcur});
                 continue;
             }
+            
         }
     }
-
-    return conOcur;
+    console.log(totalConOcurArr);
+    console.log(countGivenArr(totalConOcurArr));
+    return totalConOcur;
 }
+datasetArray = ['🍅','🍇','🍌','🍊']
+function createArrays(dataArr, dimension){
+    //nxn array
+    let finalArray = [];
+    
+    for(let i =0;i<dimension;i++){
+        innerArray =[];
+        for(let j = 0; j<dimension; j++){
+            randomIndex =Math.floor((Math.random()*dataArr.length));
+            innerArray.push(datasetArray[randomIndex]);
+        }
+        finalArray.push(innerArray);
+    }
+    return finalArray;
+}
+
 
 const nestedArray = [
     ['a', '*', '*', '*', '*'],
-    ['b', 'c', '*', 'd', 'e'],
-    ['f', 'g', '*', '*', 'h'],
+    ['🍅', 'g', '*', 'd', 'h'],
+    ['🍅', 'g', '*', '*', 'h'],
     ['*', '*', '*', 'i', 'j'],
     ['k', 'l', 'm', 'n', 'o']
 ];
 
-console.log(countMatched(nestedArray)); // Output: 12
+console.log(createArrays(datasetArray, 6))
+
+console.log(countMatched(createArrays(datasetArray, 6)));
