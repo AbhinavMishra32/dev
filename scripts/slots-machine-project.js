@@ -105,7 +105,7 @@ function countMatched(nArray){
                     //if column isnt a corner
                     if(col != 0 && col != maxColIndex){
                         //check top or bot or left or right
-                        if(nArray[row][col] == nArray[row][col+1] || nArray[row][col]==nArray[row][col-1] || nArray[row][col]==nArray[row+1][col] || nArray[row][col]==nArray[row-1][col]){
+                        if(nArray[row][col] == nArray[row][col+1] || nArray[row][col]==nArray[row][col-1] || nArray[row][col]==nArray[row+1][col] || (row < maxRowIndex && nArray[row][col] === nArray[row + 1][col])){
                             conOcur++;
                         }
                     }
@@ -113,35 +113,40 @@ function countMatched(nArray){
                 //if last row
                 else if(row == maxRowIndex){
                     //if not corner columns
-                    if(col != 0 && col !=maxColIndex){
+                    if(col != 0 && col !=maxColIndex){  
                         //check top or bot or left or right
-                        if(nArray[row][col] == nArray[row][col+1] || nArray[row][col]==nArray[row][col-1] || nArray[row][col]==nArray[row+1][col] || nArray[row][col]==nArray[row-1][col]){
+                        if(nArray[row][col] == nArray[row][col+1] || nArray[row][col]==nArray[row][col-1] || nArray[row][col]==nArray[row-1][col] ||(row < maxRowIndex && nArray[row][col] === nArray[row + 1][col])){
                             conOcur++;
                         }
                     }
                 }
+                //if in first column
                 else if(col ==0){
-                    if(row!=0 && col != maxColIndex){
+                    if(row!=0 && row != maxRowIndex){
                         //check top or bot or left or right
-                        if(nArray[row][col] == nArray[row][col+1] || nArray[row][col]==nArray[row][col-1] || nArray[row][col]==nArray[row+1][col] || nArray[row][col]==nArray[row-1][col]){
+                        if(nArray[row][col] == nArray[row][col+1] || nArray[row][col]==nArray[row][col-1] || nArray[row][col]==nArray[row+1][col] || nArray[row][col]==nArray[row-1][col] || 
+                            (row < maxRowIndex && nArray[row][col] === nArray[row + 1][col])){
                             conOcur++;
                         }
                     }
                 }
-                //when row isnt first or last
+                //if in last column
+                else if(col == maxColIndex){
+                    if(row!=0 && row!=maxRowIndex){
+                        //check top or bot or left or right
+                        if(nArray[row][col] == nArray[row][col+1] || nArray[row][col]==nArray[row][col-1] || nArray[row][col]==nArray[row+1][col] || 
+                            (row < maxRowIndex && nArray[row][col] === nArray[row + 1][col])){
+                            conOcur++;
+                        }
+                    }
+                }
                 else{
-                    if(col != 0 && col != maxColIndex){
-                        //check top or bot or left or right
-                        if(nArray[row][col] == nArray[row][col+1] || nArray[row][col]==nArray[row][col-1] || nArray[row][col]==nArray[row+1][col] || nArray[row][col]==nArray[row-1][col]){
-                            conOcur++;
-                        }
-                    }
-                    else{
-                        if(nArray[row][col] == nArray[row][col+1] || nArray[row][col]==nArray[row][col-1] || nArray[row][col]==nArray[row+1][col] || nArray[row][col]==nArray[row-1][col]){
-                            conOcur++;
-                        }
+                    if(nArray[row][col] == nArray[row][col+1] || nArray[row][col]==nArray[row][col-1] || nArray[row][col]==nArray[row+1][col] || 
+                        (row < maxRowIndex && nArray[row][col] === nArray[row + 1][col])){
+                        conOcur++;
                     }
                 }
+
             }
         }
     }
