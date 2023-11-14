@@ -72,15 +72,56 @@ go from left to right in every array
 //     return {matchedCount, rowMatchedCount, columnMatchedCount};
 // }
 
-//check left node OR right node OR top node OR bottom node.
+/*  WORKING ALGORITHM: 
+            if column or row is first or last:
+                if column or row is first:
+                    if row is first:
+                        if column is 0:
+                            only check right connections
+                        if column is last:
+                            only check the left connections
+                        only check the bottom connections
+                    if row is last:
+                        if column is 0:
+                            only check right connections
+                        if column is last:
+                            only check the left connections
+                        only check the top connections
+            else:
+                check bottom or top or left or right connections
+            */
 function countMatched(nArray){
     let conOcur = 0;
-    let rowMatchedCount = 1;
-    let columnMatchedCount = 1;
+    const maxRowIndex = nArray.length -1;
+    const maxColIndex = nArra
 
     for(let row =0; row<nArray.length-1;row++){
         for(let col = 0; col<nArray[row].length-1; col++){
-            // check if in 0th row.
+            
+            // if column or row is first or last:
+            if(col ==0)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             if(row==0){
                 //when column isnt first and last.
                 if(0<col<nArray[row].length-1){
@@ -136,6 +177,8 @@ function countMatched(nArray){
             }
         }
             }
+            //for rows not first and last
+
         }
     }
 }
