@@ -80,26 +80,63 @@ function countMatched(nArray){
 
     for(let row =0; row<nArray.length-1;row++){
         for(let col = 0; col<nArray[row].length-1; col++){
-            // check if 0th row
+            // check if in 0th row.
             if(row==0){
-                //check if column isnt first and last.
+                //when column isnt first and last.
                 if(0<col<nArray[row].length-1){
-                    //check left or right connection
+                    //check left OR right connection.
                     if(nArray[row][col]==nArray[row-1][col] || nArray[row][col] == nArray[row+1][col]){
                         conOcur++;
                         console.log(`row 0,`)
                     } 
                 }
+                // checks if in first column, then only check the right connection.
+                else if(col == 0){
+                    if(nArray[row][col] == nArray[row][col+1]){
+                        conOcur++;
+                    }
+                }
+                // checks if in last column, then only check the left connection.
+                else if(col ==nArray[row].length-1){
+                    if(nArray[row][col] == nArray[row][col-1]){
+                        conOcur++;
+                    }
+                }
+                //only counting the bottom connections in row 0.
                 if(nArray[row][col]==nArray[row][col+1]){
                     conOcur++;
                     console.log(`row 0,`)
                 }
-
-            
-            
+            }
+            // check if in last row
+            if(row== nArray.length-1){
+                //when column isnt first and last.
+                if(0<col<nArray[row].length-1){
+                    //check left OR right connection.
+                    if(nArray[row][col]==nArray[row-1][col] || nArray[row][col] == nArray[row+1][col]){
+                        conOcur++;
+                        console.log(`row 0,`)
+                    }
+                // checks if in first column, then only check the right connection.
+                else if(col == 0){
+                    if(nArray[row][col] == nArray[row][col+1]){
+                        conOcur++;
+                    }
+                }
+                // checks if in last column, then only check the left connection.
+                else if(col ==nArray[row].length-1){
+                    if(nArray[row][col] == nArray[row][col-1]){
+                        conOcur++;
+                    }
+                //only counting the top connections in last row.
+                if(nArray[row][col]==nArray[row][col-1]){
+                    conOcur++;
+                    console.log(`row 0,`)
+                }
+            }
+        }
+            }
+        }
     }
-
-
-
-
+}
 console.log(countMatched(nestedArray));
