@@ -32,18 +32,74 @@ nestedArray =  [['a','*','*','*','*'],
                 ['*','*','*','i','j'],
                 ['k','l','m','n','o']] 
 
+/*
+Logic for counting the matched items:
+go from left to right in every array 
 
+
+*/
+
+// function countMatched(nArray){
+//     let matchedCount = 0;
+//     let rowMatchedCount = 0;
+//     let columnMatchedCount = 0;
+
+//     //loop through rows
+//     for(let row =0; row<nArray.length; row++){
+//         //loop through elements in the row
+//         for(let col = 0; col<=nArray[row].length; col++){
+//             if(col < nArray[row].length && nArray[row][col] === nArray[row][col+1]){
+//                 matchedCount++;
+//                 rowMatchedCount++;
+//                 console.log(`matched on same row, coordinates: [${row},${col}], matchedCount: ${matchedCount}, rowMatchedCount: ${rowMatchedCount}, columnMatchedCount: ${columnMatchedCount}`);
+//             }
+//             if(row < nArray.length - 1 && nArray[row][col] === nArray[row+1][col]){
+//                 if(row>0){
+//                     if(nArray[row][col] === nArray[row-1][col]){
+//                         matchedCount++;
+//                         rowMatchedCount++;
+//                         console.log(`matched on same row, checked above row also , column: ${row}, coordinates: [${row},${col}], matchedCount: ${matchedCount}, rowMatchedCount: ${rowMatchedCount}, columnMatchedCount: ${columnMatchedCount}`);
+//                     }
+//                 }
+//                 else{
+//                 matchedCount++;
+//                 columnMatchedCount++;
+//                 console.log(`matched on same column, coordinates: [${row},${col}], matchedCount: ${matchedCount}, rowMatchedCount: ${rowMatchedCount}, columnMatchedCount: ${columnMatchedCount}`);
+//                 }
+//             }
+//         }
+//     }
+//     return {matchedCount, rowMatchedCount, columnMatchedCount};
+// }
+
+//check left node OR right node OR top node OR bottom node.
 function countMatched(nArray){
-    rowMatchCount = 0;
-    for(let row of nArray){
-        for(let i = 0; i < row.length-1; i++){
-            if(row[i]==row[i+1]){
-                rowMatchCount++;
-            }
-        }
+    let conOcur = 0;
+    let rowMatchedCount = 1;
+    let columnMatchedCount = 1;
 
+    for(let row =0; row<nArray.length-1;row++){
+        for(let col = 0; col<nArray[row].length-1; col++){
+            // check if 0th row
+            if(row==0){
+                //check if column isnt first and last.
+                if(0<col<nArray[row].length-1){
+                    //check left or right connection
+                    if(nArray[row][col]==nArray[row-1][col] || nArray[row][col] == nArray[row+1][col]){
+                        conOcur++;
+                        console.log(`row 0,`)
+                    } 
+                }
+                if(nArray[row][col]==nArray[row][col+1]){
+                    conOcur++;
+                    console.log(`row 0,`)
+                }
+
+            
+            
     }
-    return rowMatchCount;
-}
+
+
+
 
 console.log(countMatched(nestedArray));
