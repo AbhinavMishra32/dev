@@ -4,9 +4,10 @@
     <title>Calculator GUI</title>
 </head>
 <body>
-    <p class = "display"></p>
     <script src = 'scripts\calculator.js'></script>
-    <button class= "calc-button grey-button" onclick="solveFunction(this);">C</button>
+    <link rel="stylesheet" href="styles/calculator.css">
+    <p class = "display">&nbsp;</p>
+    <button class= "calc-button grey-button" onclick="solveFunction(this);">AC</button>
     <button class= "calc-button grey-button" onclick="solveFunction(this);">+/-</button>
     <button class= "calc-button grey-button" onclick="solveFunction(this);">%</button>
     <button class= "calc-button yellow-button" onclick="solveFunction(this);">/</button>
@@ -29,7 +30,7 @@
     <button class= "calc-button black-button" onclick="solveFunction(this);">0</button>
     <button class= "calc-button black-button" onclick="solveFunction(this);">.</button>
     <button class= "calc-button yellow-button" onclick="showAnswer();">=</button>
-
+    <button class= "calc-button yellow-button" onclick="solveFunction(this);">C</button>
 
 </body>
 </html>
