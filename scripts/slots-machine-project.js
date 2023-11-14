@@ -93,93 +93,138 @@ go from left to right in every array
 function countMatched(nArray){
     let conOcur = 0;
     const maxRowIndex = nArray.length -1;
-    const maxColIndex = nArra
+    const maxColIndex = nArray[0].length-1;
 
-    for(let row =0; row<nArray.length-1;row++){
-        for(let col = 0; col<nArray[row].length-1; col++){
+    for(let row =0; row<nArray.length;row++){
+        for(let col = 0; col<nArray[row].length; col++){
             
             // if column or row is first or last:
-            if(col ==0)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            if(row==0){
-                //when column isnt first and last.
-                if(0<col<nArray[row].length-1){
-                    //check left OR right connection.
-                    if(nArray[row][col]==nArray[row-1][col] || nArray[row][col] == nArray[row+1][col]){
-                        conOcur++;
-                        console.log(`row 0,`)
-                    } 
-                }
-                // checks if in first column, then only check the right connection.
-                else if(col == 0){
-                    if(nArray[row][col] == nArray[row][col+1]){
-                        conOcur++;
+            if(row==0 || row == maxRowIndex || col == 0 || col == maxColIndex){
+                //if in first row
+                if(row ==0){
+                    //if column isnt a corner
+                    if(col != 0 && col != maxColIndex){
+                        //check top or bot or left or right
+                        if(nArray[row][col] == nArray[row][col+1] || nArray[row][col]==nArray[row][col-1] || nArray[row][col]==nArray[row+1][col] || nArray[row][col]==nArray[row-1][col]){
+                            conOcur++;
+                        }
                     }
                 }
-                // checks if in last column, then only check the left connection.
-                else if(col ==nArray[row].length-1){
-                    if(nArray[row][col] == nArray[row][col-1]){
-                        conOcur++;
+                //if last row
+                else if(row == maxRowIndex){
+                    //if not corner columns
+                    if(col != 0 && col !=maxColIndex){
+                        //check top or bot or left or right
+                        if(nArray[row][col] == nArray[row][col+1] || nArray[row][col]==nArray[row][col-1] || nArray[row][col]==nArray[row+1][col] || nArray[row][col]==nArray[row-1][col]){
+                            conOcur++;
+                        }
                     }
                 }
-                //only counting the bottom connections in row 0.
-                if(nArray[row][col]==nArray[row][col+1]){
-                    conOcur++;
-                    console.log(`row 0,`)
+                else if(col ==0){
+                    if(row!=0 && col != maxColIndex){
+                        //check top or bot or left or right
+                        if(nArray[row][col] == nArray[row][col+1] || nArray[row][col]==nArray[row][col-1] || nArray[row][col]==nArray[row+1][col] || nArray[row][col]==nArray[row-1][col]){
+                            conOcur++;
+                        }
+                    }
+                }
+                //when row isnt first or last
+                else{
+                    if(col != 0 && col != maxColIndex){
+                        //check top or bot or left or right
+                        if(nArray[row][col] == nArray[row][col+1] || nArray[row][col]==nArray[row][col-1] || nArray[row][col]==nArray[row+1][col] || nArray[row][col]==nArray[row-1][col]){
+                            conOcur++;
+                        }
+                    }
+                    else{
+                        if(nArray[row][col] == nArray[row][col+1] || nArray[row][col]==nArray[row][col-1] || nArray[row][col]==nArray[row+1][col] || nArray[row][col]==nArray[row-1][col]){
+                            conOcur++;
+                        }
+                    }
                 }
             }
-            // check if in last row
-            if(row== nArray.length-1){
-                //when column isnt first and last.
-                if(0<col<nArray[row].length-1){
-                    //check left OR right connection.
-                    if(nArray[row][col]==nArray[row-1][col] || nArray[row][col] == nArray[row+1][col]){
-                        conOcur++;
-                        console.log(`row 0,`)
-                    }
-                // checks if in first column, then only check the right connection.
-                else if(col == 0){
-                    if(nArray[row][col] == nArray[row][col+1]){
-                        conOcur++;
-                    }
-                }
-                // checks if in last column, then only check the left connection.
-                else if(col ==nArray[row].length-1){
-                    if(nArray[row][col] == nArray[row][col-1]){
-                        conOcur++;
-                    }
-                //only counting the top connections in last row.
-                if(nArray[row][col]==nArray[row][col-1]){
-                    conOcur++;
-                    console.log(`row 0,`)
-                }
-            }
-        }
-            }
-            //for rows not first and last
-
         }
     }
+    return conOcur;
 }
 console.log(countMatched(nestedArray));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //         if(row==0){
+    //             //when column isnt first and last.
+    //             if(0<col<nArray[row].length-1){
+    //                 //check left OR right connection.
+    //                 if(nArray[row][col]==nArray[row-1][col] || nArray[row][col] == nArray[row+1][col]){
+    //                     conOcur++;
+    //                     console.log(`row 0,`)
+    //                 } 
+    //             }
+    //             // checks if in first column, then only check the right connection.
+    //             else if(col == 0){
+    //                 if(nArray[row][col] == nArray[row][col+1]){
+    //                     conOcur++;
+    //                 }
+    //             }
+    //             // checks if in last column, then only check the left connection.
+    //             else if(col ==nArray[row].length-1){
+    //                 if(nArray[row][col] == nArray[row][col-1]){
+    //                     conOcur++;
+    //                 }
+    //             }
+    //             //only counting the bottom connections in row 0.
+    //             if(nArray[row][col]==nArray[row][col+1]){
+    //                 conOcur++;
+    //                 console.log(`row 0,`)
+    //             }
+    //         }
+    //         // check if in last row
+    //         if(row== nArray.length-1){
+    //             //when column isnt first and last.
+    //             if(0<col<nArray[row].length-1){
+    //                 //check left OR right connection.
+    //                 if(nArray[row][col]==nArray[row-1][col] || nArray[row][col] == nArray[row+1][col]){
+    //                     conOcur++;
+    //                     console.log(`row 0,`)
+    //                 }
+    //             // checks if in first column, then only check the right connection.
+    //             else if(col == 0){
+    //                 if(nArray[row][col] == nArray[row][col+1]){
+    //                     conOcur++;
+    //                 }
+    //             }
+    //             // checks if in last column, then only check the left connection.
+    //             else if(col ==nArray[row].length-1){
+    //                 if(nArray[row][col] == nArray[row][col-1]){
+    //                     conOcur++;
+    //                 }
+    //             //only counting the top connections in last row.
+    //             if(nArray[row][col]==nArray[row][col-1]){
+    //                 conOcur++;
+    //                 console.log(`row 0,`)
+    //             }
+    //         }
+    //     }
+    //         }
+    //         //for rows not first and last
+
+    //     }
+    // }
+
