@@ -116,7 +116,7 @@ function startGame(){
     displayArrays(nestedArray);
     displayMatchedCount(nestedArray);
     console.log(countMatched(nestedArray));
-
+    
 }
 
 startGame()
