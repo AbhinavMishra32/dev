@@ -80,7 +80,6 @@ function createArrays(dataArr, dimension){
 
 
 // ADDING ROWS AS PARA IN HTML:
-nestedArray = createArrays(datasetArray, 6);
 
 function displayArrays(givenArr){
     rowsHTML = '';
@@ -98,9 +97,20 @@ function displayArrays(givenArr){
         
         rowsHTML +=innerHTML;
     }
-    console.log(innerHTML);
     console.log(rowsHTML);
+    document.querySelector('.js-output-array').innerHTML = rowsHTML;
 }
+
+
+function startGame(){
+    nestedArray = createArrays(datasetArray, 6);
+    displayArrays(nestedArray);
+}
+
+
+
+
+
 
 console.log(nestedArray)
 
