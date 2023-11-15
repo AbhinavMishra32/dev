@@ -112,7 +112,7 @@ function displayMatchedCount(nArray){
 
 
 function startGame(){
-    nestedArray = createArrays(datasetArray, 10);
+    nestedArray = createArrays(datasetArray, 7);
     displayArrays(nestedArray);
     displayMatchedCount(nestedArray);
     console.log(countMatched(nestedArray));

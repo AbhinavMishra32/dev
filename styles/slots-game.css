@@ -1,6 +1,14 @@
-.slots-display{
-  background-color: blanchedalmond;
-  padding: 1px;
+body{
+  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+
+
+.js-output-array{
+  display: grid;
+    /* grid-template-columns: repeat(20, 1fr); Adjust the number of columns */
+    /* gap: 5px; Adjust the space between emojis */
+     font-size: 34px; /*Adjust the font size as needed */
 }
 
 
@@ -17,4 +25,9 @@
   border-radius: 50px;
   cursor: pointer;
   margin-bottom: 30px;
+}
+
+p{
+  margin: 0px;
+  
 }
