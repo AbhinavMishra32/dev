@@ -48,7 +48,7 @@ function countMatched(nArray) {
     }
     console.log(totalConOcurArr);
     console.log(countGivenArr(totalConOcurArr));
-    return totalConOcur;
+    return totalConOcurArr;
 }
 
 
@@ -101,19 +101,22 @@ function displayArrays(givenArr){
     document.querySelector('.js-output-array').innerHTML = rowsHTML;
 }
 
-
-function startGame(){
-    nestedArray = createArrays(datasetArray, 6);
-    displayArrays(nestedArray);
+function displayMatchedCount(nArray){
+    outputHTML = '';
+    countedArray = countGivenArr(countMatched(nArray));
+    for(let i = 0; i<Object.keys(countedArray).length; i++){
+        outputHTML += `<p>${Object.keys(countedArray)[i]} matched ${Object.values(countedArray)[i]} times.</p>`;
+    }
+    document.querySelector('.js-display-matched-count').innerHTML = outputHTML;
 }
 
 
+function startGame(){
+    nestedArray = createArrays(datasetArray, 10);
+    displayArrays(nestedArray);
+    displayMatchedCount(nestedArray);
+    console.log(countMatched(nestedArray));
 
+}
 
-
-
-console.log(nestedArray)
-
-console.log(countMatched(nestedArray));
-
-displayArrays(nestedArray);
+startGame()
