@@ -52,7 +52,7 @@ function countMatched(nArray) {
 }
 
 
-datasetArray = ['🍎','🥥','🥝','🍉'];
+datasetArray = ['🍎','🥥','🥝','🍉','🌮','🍔','🍕','🍟','🥪'];
 
 function createArrays(dataArr, dimension){
     //nxn array
