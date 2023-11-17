@@ -8,7 +8,7 @@ function countGivenArr(arr) {
   
     return counts;
   }
-
+//counts the number of matches of a symbol (excluding diagonal matches)in the arrays
 function countMatched(nArray) {
     let totalConOcur = 0;
     let totalConOcurArr = [];
