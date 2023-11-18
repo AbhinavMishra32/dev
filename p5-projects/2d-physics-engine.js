@@ -2,7 +2,7 @@ function setup(){
     createCanvas(windowWidth, windowHeight);
     //initializing the shapes...
     phyRect = new Rectangle(rect_x, windowHeight-rect_y, rectWidth, rectHeight, rect_velocity);
-    phyCirc = new Circle(circle_x, windowHeight-circle_radius, circle_radius*2, circle_velocity);
+    phyCirc = new Circle(circle_x, windowHeight-circle_radius, circle_radius*2, circle_velocity, [255,0,0]);
     
 }
 
@@ -51,12 +51,13 @@ class Rectangle{
 }
 
 class Circle{
-    constructor(x, y, diameter, velocity){
+    constructor(x, y, diameter, velocity, color){
         this.x = x;
         this.y = y;
         this.diameter = diameter;
         this.velocity = velocity;
         this.center = {x: this.x + this.diameter/2, y: this.y + this.diameter/2};
+        this.color = color;
     }
     move(){
         this.x = this.x+this.velocity;
@@ -64,6 +65,7 @@ class Circle{
     }
 
     draw(){
+        fill(this.color);
         circle(this.x, this.y, this.diameter);
     }
 }
@@ -80,12 +82,13 @@ function distanceFind(circle, rect){
 }
 
 function checkCollision(circle, rect){
-    if(distanceFind(circle, rect) >= circle.diameter/2 + rect.width/2){
-        
-        return false;
-    }
-    else{
-        // stop();
+    let dx = Math.abs(circle.center.x - rect.center.x);
+    let dy = Math.abs(circle.center.y - rect.center.y);
+
+    if (dx <= (rect.width/2 + circle.diameter/2) && dy <= (rect.height/2 + circle.diameter/2)) {
+        circle.velocity = -circle.velocity;
         return true;
+    } else {
+        return false;
     }
 }
