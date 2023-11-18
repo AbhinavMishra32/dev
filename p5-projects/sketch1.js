@@ -35,6 +35,7 @@ function draw() {
 }
 
 function keyPressed(){
+    stop();
 }
 
 function mousePressed(){
