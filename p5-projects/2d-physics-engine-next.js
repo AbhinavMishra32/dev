@@ -1,6 +1,6 @@
 function setup(){
     createCanvas(windowWidth, windowHeight);
-    
+    print("hello")
 }
 
 let rect_x = 100;

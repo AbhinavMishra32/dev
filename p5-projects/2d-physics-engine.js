@@ -1,5 +1,8 @@
 function setup(){
     createCanvas(windowWidth, windowHeight);
+    //initializing the shapes...
+    phyRect = new Rectangle(rect_x, windowHeight-rect_y, rectWidth, rectHeight, rect_velocity);
+    phyCirc = new Circle(circle_x, windowHeight-circle_radius, circle_radius*2, circle_velocity);
     
 }
 
@@ -10,32 +13,35 @@ let rectHeight = 50;
 
 let circle_x = 40;
 let circle_radius = 20;
+
+let rect_velocity = -1;
+let circle_velocity = 1;
+
 function draw(){
     background(30);
-    //initializing the shapes...
-    phyRect = new Rectangle(rect_x, windowHeight-rect_y, rectWidth, rectHeight);
-    phyCirc = new Circle(circle_x, windowHeight-circle_radius, circle_radius*2) ;
+    //moving the shapes..
     phyRect.draw();
+    phyRect.move();
     phyCirc.draw();
-    phyCirc.x = phyCirc +1;
-    
+    phyCirc.move();
 
-    
+    console.log(distanceFind(phyCirc, phyRect));
+    console.log(checkCollision(phyCirc, phyRect));
     
 }
-// for(let i = 0 ; i< 200; i++){
-//     phyRect.x = phyRect.x +1;   
-//     console.log('is happening');
-// }
-// setTimeout(noLoop(), 6000);
-
 class Rectangle{
-    constructor(x, y, width, height, mass){
+    constructor(x, y, width, height, velocity, mass){
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
         this.mass = mass; 
+        this.velocity = velocity;
+        this.center = {x: this.x + this.width/2, y: this.y + this.height/2};
+    }
+
+    move(){
+        this.x = this.x + this.velocity;
     }
 
     draw(){
@@ -44,12 +50,15 @@ class Rectangle{
 }
 
 class Circle{
-    constructor(x, y, diameter){
+    constructor(x, y, diameter, velocity){
         this.x = x;
         this.y = y;
         this.diameter = diameter;
-        //default velocity
-        this.velocity = 0;
+        this.velocity = velocity;
+        this.center = {x: this.x + this.diameter/2, y: this.y + this.diameter/2};
+    }
+    move(){
+        this.x = this.x+this.velocity;
     }
 
     draw(){
@@ -57,3 +66,24 @@ class Circle{
     }
 }
 
+function distanceFind(circle, rect){
+    x1 = circle.center.x;
+    y1 = circle.center.y;
+    x2 = rect.center.x;
+    y2 = rect.center.y;
+    
+    let distance = Math.sqrt(((x1-x2)**2 + (y1-y2)**2));
+    return distance;
+    
+}
+
+function checkCollision(circle, rect){
+    if(distanceFind(circle, rect) >= circle.diameter/2 + rect.width/2){
+        
+        return false;
+    }
+    else{
+        stop();
+        // return true;
+    }
+}
