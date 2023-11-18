@@ -14,7 +14,7 @@ let rectHeight = 50;
 let circle_x = 40;
 let circle_radius = 20;
 
-let rect_velocity = -1;
+let rect_velocity = -0.25;
 let circle_velocity = 1;
 
 function draw(){
@@ -42,6 +42,7 @@ class Rectangle{
 
     move(){
         this.x = this.x + this.velocity;
+        this.center.x = this.x + this.width/2;
     }
 
     draw(){
@@ -59,6 +60,7 @@ class Circle{
     }
     move(){
         this.x = this.x+this.velocity;
+        this.center.x = this.x + this.diameter/2;
     }
 
     draw(){
@@ -83,7 +85,7 @@ function checkCollision(circle, rect){
         return false;
     }
     else{
-        stop();
-        // return true;
+        // stop();
+        return true;
     }
 }
