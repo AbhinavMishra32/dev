@@ -26,15 +26,12 @@ class Mover{
     this.acc.setMag(0.1);
 
     this.vel.add(this.acc);
-    // this.vel.limit(2); 
 
     this.pos.add(this.vel);
     }
 
   show(){
-    // stroke(255, 10);
     noStroke();
-    // strokeWeight(4);
     fill(255);
     circle(this.pos.x, this.pos.y, 32);
     }
