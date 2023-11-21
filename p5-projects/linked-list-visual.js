@@ -16,18 +16,20 @@ function draw(){
 }
 
 function keyPressed(){
-    if(keyCode === UP_ARROW){
-        ball.applyForce([0, -0.1]);
-    }
-    if(keyCode === DOWN_ARROW){
-        ball.applyForce([0, 0.1]);
-    }
-    if(keyCode === LEFT_ARROW){
-        ball.applyForce([-0.1, 0]);
-    }
-    if(keyCode === RIGHT_ARROW){
-        ball.applyForce([0.1, 0]);
-    }
+    // if(keyCode === UP_ARROW){
+    //     ball.applyForce([0, -0.1]);
+    // }
+    // if(keyCode === DOWN_ARROW){
+    //     ball.applyForce([0, 0.1]);
+    // }
+    // if(keyCode === LEFT_ARROW){
+    //     ball.applyForce([-0.1, 0]);
+    // }
+    // if(keyCode === RIGHT_ARROW){
+    //     ball.applyForce([0.1, 0]);
+    // }
+
+    ball.applyForce([0, -0.1]);
 
 }
 
