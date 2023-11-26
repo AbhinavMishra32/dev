@@ -1,0 +1,35 @@
+body {
+    margin: 0;
+    line-height: normal;
+  }
+  
+  :root {
+    /* fonts */
+    --handheld-body-large-bold: Inter;
+    --font-anton: Anton;
+  
+    /* font sizes */
+    --handheld-body-large-bold-size: 16px;
+    --desktop-body-large-default-size: 18px;
+  
+    /* Colors */
+    --world-peas-cremini-base: #fff;
+    --world-peas-compost-base: #000;
+  
+    /* Gaps */
+    --gap-5xl: 24px;
+    --gap-base: 16px;
+    --gap-xs: 12px;
+    --gap-5xs: 8px;
+  
+    /* Paddings */
+    --padding-sm: 14px;
+    --padding-5xl: 24px;
+    --padding-5xs: 8px;
+    --padding-xs: 12px;
+  
+    /* Border radiuses */
+    --br-base: 16px;
+    --br-xs: 12px;
+  }
+  
