@@ -24,6 +24,7 @@ function validate(){
 
     if(accounts[username] == password){
         alert("logged in"); 
+        window.location = "login-accepted.html";
     }
     else{
         alert("wrong username or password");
